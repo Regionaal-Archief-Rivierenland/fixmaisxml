@@ -4,7 +4,6 @@ function show_help
     echo -e "Transform MAIS XML into well-formed XML\n"
     echo (set_color -o --underline)"Usage:"(set_color normal -o) \
         "fixmaisxml"(set_color normal)" FILE.xml [FILE2.xml ...]"
-        
 end
 
 if test (count $argv) -eq 0
@@ -18,7 +17,7 @@ if contains -- -h $argv; or contains -- --help $argv
 end
 
 for f in $argv
-    # add some idempotency by checking if closing tag has already been inserted 
+    # add some idempotency by checking if closing tag has already been inserted
     if tail $f | grep -q '</MFEXPORT>'
         echo "Skipping $f, since it seems to be fixed already"
         continue
