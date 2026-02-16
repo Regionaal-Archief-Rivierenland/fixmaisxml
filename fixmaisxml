@@ -31,6 +31,6 @@ for f in $argv
     sd '<WAARDE>' '<WAARDE><![CDATA[' $f
     sd '</WAARDE>' ']]></WAARDE>' $f
 
-    # append missing closing tag
+    # root-elem <MFEXPORT> lacks a closing tag, so append it
     echo '</MFEXPORT>' >> $f
 end
