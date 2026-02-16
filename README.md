@@ -1,4 +1,4 @@
-XML exports uit MAIS (ook wel "MAIS XML") zijn vrijwel nooit syntactisch correcte XML
+XML exports uit MAIS (ook wel "MAIS XML") bevatten vrijwel nooit syntactisch correcte XML.
 
 Dit script voert een paar simpele _search & replaces_ uit om deze syntax-errors op te lossen.
 
@@ -21,4 +21,4 @@ $ fixmaisxml *.xml # fix alle MAIS XML in de huidige map
 # Installatie
 
 1. `git clone` deze repo
-2. Kopieer of symlink `fixmaisxml` ergens in je PATH, bijvoorbeeld in `/usr/local/bin/`
+2. Kopieer of symlink `fixmaisxml` ergens in je `PATH`, bijvoorbeeld in `/usr/local/bin/`
