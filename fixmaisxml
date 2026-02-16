@@ -1,0 +1,36 @@
+#!/bin/fish
+
+function show_help
+    echo "Transform MAIS XML into well-formed XML"
+    echo
+    echo "Usage: fixmaisxml FILE.xml [FILE2.xml ...]"
+end
+
+if test (count $argv) -eq 0
+    show_help
+    exit 1
+end
+
+if contains -- -h $argv; or contains -- --help $argv
+    show_help
+    exit 0
+end
+
+for f in $argv
+    # make script idempotent by checking for if closing tag has already been added 
+    if grep -q '</MFEXPORT>' $f
+        echo "Skipping $f, since it seems to be fixed already"
+        continue
+    end
+
+    # ampersands seem to never be inserted correctly
+    sd '&' '&amp;' $f
+
+    # <WAARDE>-elems can hold any data, including malformed HTML/XML. Hence, we
+    # wrap their contents in a CDATA
+    sd '<WAARDE>' '<WAARDE><![CDATA[' $f
+    sd '</WAARDE>' ']]></WAARDE>' $f
+
+    # append missing closing tag
+    echo '</MFEXPORT>' >> $f
+end
