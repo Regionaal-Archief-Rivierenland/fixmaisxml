@@ -14,6 +14,7 @@ $ fixmaisxml --help
 Transform MAIS XML into well-formed XML
 
 Usage: fixmaisxml FILE.xml [FILE2.xml ...]
+
 $ fixmaisxml *.xml # fix alle MAIS XML in de huidige map
 ```
 
