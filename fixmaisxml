@@ -1,9 +1,10 @@
 #!/bin/fish
 
 function show_help
-    echo "Transform MAIS XML into well-formed XML"
-    echo
-    echo "Usage: fixmaisxml FILE.xml [FILE2.xml ...]"
+    echo -e "Transform MAIS XML into well-formed XML\n"
+    echo (set_color -o --underline)"Usage:"(set_color normal -o) \
+        "fixmaisxml"(set_color normal)" FILE.xml [FILE2.xml ...]"
+        
 end
 
 if test (count $argv) -eq 0
