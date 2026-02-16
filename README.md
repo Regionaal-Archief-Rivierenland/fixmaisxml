@@ -9,7 +9,7 @@ Dit script voert een paar simpele _search and replaces_ uit om deze syntax-error
 
 # Instructies
 
-``` shell
+``` fish
 $ fixmaisxml --help
 Transform MAIS XML into well-formed XML
 
