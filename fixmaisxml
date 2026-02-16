@@ -24,6 +24,7 @@ for f in $argv
     end
 
     # ampersands seem to never be inserted correctly
+    # FIXME: is &amp; truly never used?
     sd '&' '&amp;' $f
 
     # <WAARDE>-elems can hold any data, including malformed HTML/XML. Hence, we
