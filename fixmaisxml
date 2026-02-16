@@ -17,7 +17,7 @@ if contains -- -h $argv; or contains -- --help $argv
 end
 
 for f in $argv
-    # make script idempotent by checking for if closing tag has already been added 
+    # add some idempotency by checking if closing tag has already been inserted 
     if grep -q '</MFEXPORT>' $f
         echo "Skipping $f, since it seems to be fixed already"
         continue
