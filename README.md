@@ -21,4 +21,4 @@ $ fixmaisxml *.xml # fix alle MAIS XML in de huidige map
 # Installatie
 
 1. `git clone` deze repo
-2. Kopieer of symlink `fixmaisxml` ergens in je PATH, bijvoorbeeld in `/usr/local/bin/`
+2. Kopieer of symlink `fixmaisxml` ergens in je `PATH`, bijvoorbeeld in `/usr/local/bin/`
