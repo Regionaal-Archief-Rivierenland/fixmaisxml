@@ -33,5 +33,5 @@ for f in $argv
     sd '</WAARDE>' ']]></WAARDE>' $f
 
     # root-elem <MFEXPORT> lacks a closing tag, so append it
-    echo '</MFEXPORT>' >> $f
+    printf '</MFEXPORT>' >> $f
 end
