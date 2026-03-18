@@ -35,3 +35,5 @@ for f in $argv
     # root-elem <MFEXPORT> lacks a closing tag, so append it
     printf '</MFEXPORT>' >> $f
 end
+
+# hier komt de control characters code
