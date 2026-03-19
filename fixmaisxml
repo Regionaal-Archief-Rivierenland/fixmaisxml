@@ -29,8 +29,7 @@ for f in $argv
 
     # certain elems can hold any data, including malformed HTML/XML. Hence, we
     # wrap their contents in a CDATA section
-    set -l wrap_tags WAARDE CODE REL_CODE REL_TOP_CODE TREFWOORD OMSCHRIJVING NAAM BESCHRIJVING PADNAAM PROMPT
-    for tag in $wrap_tags
+    for tag in WAARDE CODE REL_CODE REL_TOP_CODE TREFWOORD OMSCHRIJVING NAAM BESCHRIJVING PADNAAM PROMPT
         sd "<$tag>" "<$tag><![CDATA[" $f
         sd "</$tag>" "]]></$tag>" $f
     end
