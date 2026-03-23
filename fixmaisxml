@@ -16,6 +16,9 @@ if contains -- -h $argv; or contains -- --help $argv
     exit 0
 end
 
+# regex for tags whose contents need to be wrapped in CDATA
+set cdata_tags (string join "|" WAARDE CODE REL_CODE REL_TOP_CODE TREFWOORD OMSCHRIJVING NAAM BESCHRIJVING PADNAAM PROMPT)
+
 for f in $argv
     # add some idempotency by checking if closing tag has already been inserted
     if tail $f | grep -q '</MFEXPORT>'
@@ -23,16 +26,14 @@ for f in $argv
         continue
     end
 
+    # certain elems can hold any data, including malformed HTML/XML. Hence, we
+    # wrap their contents in a CDATA section
+    sd "<($cdata_tags)>" '$0<![CDATA[' $f
+    sd "</($cdata_tags)>" ']]>$0' $f
+
     # ampersands seem to never be inserted correctly
     # FIXME: is &amp; truly never used?
     sd '&' '&amp;' $f
-
-    # certain elems can hold any data, including malformed HTML/XML. Hence, we
-    # wrap their contents in a CDATA section
-    for tag in WAARDE CODE REL_CODE REL_TOP_CODE TREFWOORD OMSCHRIJVING NAAM BESCHRIJVING PADNAAM PROMPT
-        sd "<$tag>" "<$tag><![CDATA[" $f
-        sd "</$tag>" "]]></$tag>" $f
-    end
 
     # control characters arent valid xml so we replace them with nothing: ''
     sd '[\x00-\x08\x0B\x0C\x0E-\x1F\u{FFFE}\u{FFFF}]' '' $f
