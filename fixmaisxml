@@ -17,7 +17,7 @@ if contains -- -h $argv; or contains -- --help $argv
 end
 
 # regex for tags whose contents need to be wrapped in CDATA
-set cdata_tags (string join "|" WAARDE CODE REL_CODE REL_TOP_CODE TREFWOORD OMSCHRIJVING NAAM BESCHRIJVING PADNAAM PROMPT)
+set cdata_tags (string join "|" WAARDE CODE REL_CODE REL_TOP_CODE TREFWOORD OMSCHRIJVING NAAM BESCHR?IJVING PADNAAM PROMPT)
 
 for f in $argv
     # add some idempotency by checking if closing tag has already been inserted
