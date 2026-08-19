@@ -31,10 +31,6 @@ for f in $argv
     sd "<($cdata_tags)>" '$0<![CDATA[' $f
     sd "</($cdata_tags)>" ']]>$0' $f
 
-    # ampersands seem to never be inserted correctly
-    # FIXME: is &amp; truly never used?
-    sd '&' '&amp;' $f
-
     # control characters arent valid xml so we replace them with nothing: ''
     sd '[\x00-\x08\x0B\x0C\x0E-\x1F\u{FFFE}\u{FFFF}]' '' $f
 
