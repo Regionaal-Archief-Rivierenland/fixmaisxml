@@ -15,6 +15,9 @@ Transform MAIS XML into well-formed XML
 
 Usage: fixmaisxml FILE.xml [FILE2.xml ...]
 
+Options:
+  --defix, -d   Detransform ("defix") well-formed XML into MAIS XML
+
 $ fixmaisxml *.xml # fix alle MAIS XML in de huidige map
 ```
 

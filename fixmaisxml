@@ -2,8 +2,11 @@
 
 function show_help
     echo -e "Transform MAIS XML into well-formed XML\n"
-    echo (set_color -o --underline)"Usage:"(set_color normal -o) \
-        "fixmaisxml"(set_color normal)" FILE.xml [FILE2.xml ...]"
+    echo -e (set_color -o --underline)"Usage:"(set_color normal -o) \
+        "fixmaisxml"(set_color normal)" FILE.xml [FILE2.xml ...]\n"
+
+    echo (set_color -o --underline)"Options:"(set_color normal)
+    echo -e -- '  --defix, -d\tDetransform ("defix") well-formed XML into MAIS XML'
 end
 
 if test (count $argv) -eq 0
@@ -13,6 +16,14 @@ end
 
 if contains -- -h $argv; or contains -- --help $argv
     show_help
+    exit 0
+end
+
+if string match -qr -- "--defix" "$argv[1]$argv[-1]"; or string match -qr -- "-d" "$argv[1]$argv[-1]"
+    for f in $argv[2..]
+        sd '</MFEXPORT>' '' $f
+        sd -A -f ms '<!\[CDATA\[(.*?)\]\]>' '$1' $f
+    end
     exit 0
 end
 
